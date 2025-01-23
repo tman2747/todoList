@@ -1,94 +1,39 @@
+const getTitle = (state) =>({
+    getTitle: () => {
+        return state.title
+    }
+})
+
+const getDescription = (state) =>({
+    getDescription: () => {
+        return state.description
+    }
+})
+const getCheckable = (state) =>({
+    getCheckable:() => {
+        console.log(state.checkable)
+    }
+})
 export const todoItem = (inputTitle="Title", description="") =>{
     let state = {
         title: inputTitle, // this is just a different name because of testing could easily be "title: title" or just "title," you would need to change the function signature tho
-        description: description, // weird but you referer to the value not the key when using in functions.
+        description: description, // weird but you referer to the value not the key when using in functions. you could also use state.description or state.complete to do it that way
     }
     return Object.assign(
         {},
-        {
-            getTitle: () =>{
-                return inputTitle
-            }
-        },        
-        {
-            getDescription: () => description
-            
-        },
+        getTitle(state),
+        getDescription(state),
     )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const dog = (thename,otheroptions) =>
-{
+export const todoItemcheck = (inputTitle="title",description,checked=false) =>{
     let state = {
-        name: thename,
-
-
+        checkable: checked,
 
     }
-
-    return Object.assign({},
-        barker(state),
-        {
-            yum: () =>{
-                console.log("really yummy");
-            }
-        },
-        {
-        talk: () =>
-            {
-                console.log(thename);
-            }
-        },
-        yum(state),
-    )
+    return Object.assign(
+    {},
+    todoItem(inputTitle,state.description),
+    getCheckable(state)
+)
 }
-
-const barker = (state) => ({
-    bark: () =>
-    {
-        console.log("bark")
-    }
-})
-
-const yum = (state) => ({
-    yum: () => {
-        console.log("yummy")
-    }
-})
-
-console.log("anything ran from here will automatically run when imported and before anything in index.js -- Triston")
