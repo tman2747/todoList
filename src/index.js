@@ -2,9 +2,6 @@ import styles from "./styles.css"
 import { dog } from "./todoFactory"
 
 
-let mydog = dog("name")
-
+let mydog = dog("name", "yummy")
 mydog.talk()
-
-mydog.changename()
-mydog.talk()
+mydog.yummy()
