@@ -1,5 +1,5 @@
 {
-  "name": "todolist", 
+  "name": "todolist",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,8 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0",
     "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "pubsub-js": "^1.9.5"
   }
 }

@@ -1,2 +1,10 @@
 import styles from "./styles.css"
-console.log("hello world")
+import { dog } from "./todoFactory"
+
+
+let mydog = dog("name")
+
+mydog.talk()
+
+mydog.changename()
+mydog.talk()
