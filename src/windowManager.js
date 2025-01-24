@@ -13,6 +13,11 @@ export function createrProjectWindow(Project)
     addButton.classList.add("add")
     addButton.innerHTML = "+"
 
+    addButton.addEventListener("click",()=>{
+        //call create popup window here
+        console.log("add button clicked")
+    })
+
     header.appendChild(addButton)
 
 
@@ -23,18 +28,27 @@ export function createrProjectWindow(Project)
     Project.getProjectList().forEach(element => {
         const card = document.createElement("div")
         card.classList.add("card")
-        card.innerHTML = element.getProjectName()
+
+        const circle = document.createElement("div")
+        circle.classList.add("circle")
+        card.appendChild(circle)
+
+        const cardText = document.createElement("div")
+        cardText.classList.add("card-text")
+        cardText.innerHTML = element.getProjectName()
+        
+        card.appendChild(cardText)
         cardContainer.appendChild(card)
     });
 
-    // cardContainer.appendChild()
-    
-    
     content.appendChild(header)    
     content.appendChild(cardContainer)
     
 }
-
+            /*<div class="card">
+                <div class="circle"></div>
+                reminders
+            </div>*/
 export function updateWindow(list)
 {
 
