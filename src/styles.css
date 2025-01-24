@@ -42,7 +42,6 @@ body {
 }
 
 .card-container{
-    height: 200px;
     background-color: white;
     border-radius: 10px;
     
@@ -67,4 +66,15 @@ body {
 }
 .card:hover, .add:hover{
     background-color: rgb(213, 213, 213);
+}
+
+#first{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+#last{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
 }
