@@ -27,6 +27,7 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     padding: 3px 0;
+    width: 500px; /* Maybe remove later? when the card container is emppty it might make it look like shit without or add to cardcontainer*/
 }
 
 .add{
@@ -46,12 +47,24 @@ body {
     border-radius: 10px;
     
 }
+
 .card{
     padding: 10px;
     width: 500px;
     border-bottom: 1px solid rgb(211, 211, 211);
+    display: flex;
+    align-items: flex-end;
 }
-
+.circle{
+    width: 20px;
+    height: 20px;
+    background: blue;
+    border-radius: 90px;
+    margin: 0px 10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .card:hover, .add:hover{
     background-color: rgb(213, 213, 213);
 }

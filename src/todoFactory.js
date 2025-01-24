@@ -42,7 +42,7 @@ const getId = (state) =>({
     }
 })
 
-export const todoItem = (inputTitle="title",description = "", checked=false,date = null) =>{
+export const todoItem = (inputTitle="title",description = null, checked=false, date = null) =>{
     let state = {
         id: id++,
         title: inputTitle, // this is just a different name because of testing could easily be "title: title" or just "title," you would need to change the function signature tho

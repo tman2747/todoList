@@ -17,4 +17,7 @@ export class project {
     getProjectName() {
         return this.name
     }
+    getProjectList(){
+        return this.projectList
+    }
 }
