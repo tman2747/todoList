@@ -23,7 +23,7 @@ export function createrProjectWindow(mainProject)
 
     const cardContainer = document.createElement("div")
     cardContainer.classList.add("card-container")
-    let color = ["blue","red","yellow","green"]
+    const color = ["blue","red","yellow","green"]
         for (let i = 0; i < mainProject.getProjectList().length; i++)
             {
                 const card = document.createElement("div")
