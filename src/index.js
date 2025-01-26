@@ -16,8 +16,16 @@ const firstProject = new project("Reminders")
 const secondProject = new project("To Do")
 const thirdProject = new project("Other")
 projectContainter.addItem(firstProject)
-projectContainter.addItem(thirdProject)
+firstProject.addItem(checkitem)
 projectContainter.addItem(secondProject)
+projectContainter.addItem(thirdProject)
 
+const popup = document.querySelector(".popup-window")
+popup.addEventListener("click", (event) => {
+    if (event.target == popup)
+    {
+        popup.remove()
+    }
+})
 
 createrProjectWindow(projectContainter)
