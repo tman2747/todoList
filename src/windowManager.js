@@ -22,7 +22,7 @@ function addHeader(mainProject)
 
     addButton.addEventListener("click",()=>{
         //call create popup window here
-        createPopupWindow()
+        createPopupWindow(mainProject)
     })
     header.appendChild(addButton)
     content.appendChild(header)    
@@ -145,7 +145,7 @@ function openProject(project,mainProject)
     content.appendChild(cardContainer)
 }
 
-function createPopupWindow()
+function createPopupWindow(mainProject)
 {
     const popupWindow = document.createElement("div")
     popupWindow.classList.add("popup-window")
@@ -171,6 +171,11 @@ function createPopupWindow()
     windowField.classList.add("window-field")
 
     const form = document.createElement("form")
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent the default form submission
+        mainProject.addItem(new project(input.value))
+        createrProjectWindow(mainProject)
+    });
     const label =  document.createElement("label")
     label.htmlFor = "listName"
     label.innerText = "New List"
@@ -187,6 +192,10 @@ function createPopupWindow()
     const addButton = document.createElement("button")
     addButton.innerHTML = "Add"
     addButton.type = "button"
+    addButton.addEventListener("click", ()=>{
+        mainProject.addItem(new project(input.value))
+        createrProjectWindow(mainProject)
+    })
 
     form.appendChild(windowField)
     form.appendChild(addButton)
