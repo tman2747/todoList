@@ -39,6 +39,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .card-container{
@@ -96,13 +97,44 @@ body {
     height: 100%;
     
 }
-.form{
+.create-project-window{
     background-color: white;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 100px;
 
     position: absolute;
     top: 65px;
-    left: calc(50% - 250px);
+    left: calc(50% - 200px);
     border-radius: 10px;
+    padding: 5px;
+}
+
+.create-project-window > form{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.window-field{
+    display: flex;
+    gap: 10px;
+}
+
+.close{
+    background-color: rgb(216, 216, 216);
+    width: 20px;
+    height: 20px;
+    border-radius: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+    cursor: pointer;
+}
+
+.close:hover{
+    background-color: rgb(139, 139, 139);
+
 }

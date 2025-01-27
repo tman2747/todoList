@@ -22,7 +22,7 @@ function addHeader(mainProject)
 
     addButton.addEventListener("click",()=>{
         //call create popup window here
-        console.log("add button clicked")
+        createPopupWindow()
     })
     header.appendChild(addButton)
     content.appendChild(header)    
@@ -143,4 +143,62 @@ function openProject(project,mainProject)
             }
 
     content.appendChild(cardContainer)
+}
+
+function createPopupWindow()
+{
+    const popupWindow = document.createElement("div")
+    popupWindow.classList.add("popup-window")
+    popupWindow.addEventListener("click", (event) => {
+        if (event.target == popupWindow)
+        {
+            popupWindow.remove()
+        }
+    })
+
+    const createProjectWindow = document.createElement("div")
+    createProjectWindow.classList.add("create-project-window")    
+
+    const closeButton = document.createElement("div")
+    closeButton.classList.add("close")
+    closeButton.innerHTML = "x"
+    closeButton.addEventListener("click", ()=>{
+        popupWindow.remove()
+    })
+    createProjectWindow.appendChild(closeButton)
+    
+    const windowField = document.createElement("div")
+    windowField.classList.add("window-field")
+
+    const form = document.createElement("form")
+    const label =  document.createElement("label")
+    label.htmlFor = "listName"
+    label.innerText = "New List"
+
+    const input = document.createElement("input")
+    input.type = "text"
+    input.id = "listName"
+    input.placeholder = "List Name"
+    input.name = "listName"
+
+    windowField.appendChild(label)
+    windowField.appendChild(input)
+
+    const addButton = document.createElement("button")
+    addButton.innerHTML = "Add"
+    addButton.type = "button"
+
+    form.appendChild(windowField)
+    form.appendChild(addButton)
+
+    createProjectWindow.appendChild(form)
+
+    
+    
+    popupWindow.appendChild(createProjectWindow)
+
+
+    
+
+    content.appendChild(popupWindow)
 }

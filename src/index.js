@@ -20,12 +20,4 @@ firstProject.addItem(checkitem)
 projectContainter.addItem(secondProject)
 projectContainter.addItem(thirdProject)
 
-const popup = document.querySelector(".popup-window")
-popup.addEventListener("click", (event) => {
-    if (event.target == popup)
-    {
-        popup.remove()
-    }
-})
-
 createrProjectWindow(projectContainter)
