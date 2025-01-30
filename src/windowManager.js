@@ -1,5 +1,6 @@
 import { project } from "./project"
 import { todoItem } from "./todoFactory"
+import {convertFromJson, saveToJson} from "./customJsonParsing"
 
 const content = document.querySelector(".content")
 
@@ -8,7 +9,6 @@ export function createrProjectWindow(mainProject)
 {
     addHeader(mainProject)
     addCards(mainProject)
-    
 }
 
 function addHeader(mainProject)
@@ -172,7 +172,8 @@ function createNewTodoWindow(currentProject,mainProject)
     form.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent the default form submission on submit button
         currentProject.addItem(todoItem(input.value))
-        createProjectWindow(mainProject)
+        saveToJson(mainProject)
+        openProject(currentProject,mainProject)
     });
     const label =  document.createElement("label")
     label.htmlFor = "listName"
@@ -192,6 +193,7 @@ function createNewTodoWindow(currentProject,mainProject)
     addButton.type = "button"
     addButton.addEventListener("click", ()=>{
         currentProject.addItem(todoItem(input.value))
+        saveToJson(mainProject)
         openProject(currentProject,mainProject)
     })
 
@@ -239,6 +241,7 @@ function createPopupWindow(mainProject)
     form.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent the default form submission on submit button
         mainProject.addItem(new project(input.value))
+        saveToJson(mainProject)
         createrProjectWindow(mainProject)
     });
     const label =  document.createElement("label")
@@ -259,6 +262,7 @@ function createPopupWindow(mainProject)
     addButton.type = "button"
     addButton.addEventListener("click", ()=>{
         mainProject.addItem(new project(input.value))
+        saveToJson(mainProject)
         createrProjectWindow(mainProject)
     })
 

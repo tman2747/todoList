@@ -42,6 +42,18 @@ const getId = (state) =>({
     }
 })
 
+const toJson = (state)=>({
+    toJson:()=>{
+        return{
+            id: state.id,
+            title: state.title,
+            description: state.description,
+            checked: state.checked,
+            date: state.date
+        }
+    }
+})
+
 export const todoItem = (inputTitle="title",description = null, checked=false, date = null) =>{
     let state = {
         id: id++,
@@ -59,5 +71,6 @@ export const todoItem = (inputTitle="title",description = null, checked=false, d
         setTitle(state),
         setDescription(state),
         getId(state),
+        toJson(state),
     )
 }

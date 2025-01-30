@@ -1,23 +1,10 @@
 import styles from "./styles.css"
-import {todoItem} from "./todoFactory"
+import { todoItem } from "./todoFactory"
 import { project } from "./project"
 import { createrProjectWindow, createWindow } from "./windowManager"
+import { saveToJson,convertFromJson } from "./customJsonParsing"
 
 
-// let item1 = todoItem("cool title","easier said then done")
-
-// console.log(item1.getTitle())
-// console.log(item1.getDescription())
-
-const checkitem = todoItem("cool",null)
-
-const projectContainter = new project("My Lists")
-const firstProject = new project("Reminders")
-const secondProject = new project("To Do")
-const thirdProject = new project("Other")
-projectContainter.addItem(firstProject)
-firstProject.addItem(checkitem)
-projectContainter.addItem(secondProject)
-projectContainter.addItem(thirdProject)
-
-createrProjectWindow(projectContainter)
+let newproct = convertFromJson()
+console.log(newproct)
+createrProjectWindow(newproct)
