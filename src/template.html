@@ -13,13 +13,33 @@
         </div>
         <div class="card-container">
             <div class="card">
-                <div class="circle"></div>
-                <div class="card-text">reminders</div>
-                
+                <input type="checkbox">
+                <div class="card-text">todo</div>
+                <div class="date">07-17-11</div>
             </div>
             <div class="card">
-                <div class="circle"></div>
-                To do</div>
+                <div class="circle">
+
+                </div>
+                To do
+            </div>
+        </div>
+        <div class="popup-window">
+            <div class="create-project-window-todo">
+                <div class="close">x</div>
+                <form>
+                    <div class="window-field-todo">
+                        <label for="listName">New Todo</label>
+                        <input type="text" id="listName" placeholder="List Name" name="listName">
+
+                        <label for="description">description</label>
+                        <input type="text" id="description" placeholder="desc..." name="description">
+                        <label for="date">Date reminder is due (Optional)</label>
+                        <input type="date" name="date" id="date">
+                        <button class="add-button" type="button" id="add-button">Add</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

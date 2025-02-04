@@ -96,7 +96,7 @@ function openProject(project,mainProject)
 
     addButton.addEventListener("click",()=>{
         //call create popup window here
-        createNewTodoWindow(project,mainProject)
+        createTodoPopupWindow(project,mainProject)
     })
     header.appendChild(addButton)
     content.appendChild(header)    
@@ -142,8 +142,23 @@ function openProject(project,mainProject)
     content.appendChild(cardContainer)
 }
 
-
-function createNewTodoWindow(currentProject,mainProject)
+{/*<div class="popup-window">
+    <div class="create-project-window-todo">
+        <div class="close">x</div>
+        <form>
+            <div class="window-field-todo">
+                <label for="listName">New Todo</label>
+                <input type="text" id="listName" placeholder="List Name" name="listName">
+                <label for="description">description</label>
+                <input type="text" id="description" placeholder="desc..." name="description">
+                <label for="date">Date reminder is due (Optional)</label>
+                <input type="date" name="date" id="date">
+                <button class="add-button" type="button" id="add-button">Add</button>
+            </div>
+        </form>
+    </div>
+</div>*/}
+function createTodoPopupWindow(currentProject,mainProject)
 {
     const popupWindow = document.createElement("div")
     popupWindow.classList.add("popup-window")
@@ -155,7 +170,7 @@ function createNewTodoWindow(currentProject,mainProject)
     })
 
     const createProjectWindow = document.createElement("div")
-    createProjectWindow.classList.add("create-project-window")    
+    createProjectWindow.classList.add("create-project-window-todo")    
 
     const closeButton = document.createElement("div")
     closeButton.classList.add("close")
@@ -166,33 +181,50 @@ function createNewTodoWindow(currentProject,mainProject)
     createProjectWindow.appendChild(closeButton)
     
     const windowField = document.createElement("div")
-    windowField.classList.add("window-field")
+    windowField.classList.add("window-field-todo")
 
     const form = document.createElement("form")
     form.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent the default form submission on submit button
-        currentProject.addItem(todoItem(input.value))
+        currentProject.addItem(todoItem(inputName.value))
         saveToJson(mainProject)
         openProject(currentProject,mainProject)
     });
-    const label =  document.createElement("label")
-    label.htmlFor = "listName"
-    label.innerText = "New List"
-
-    const input = document.createElement("input")
-    input.type = "text"
-    input.id = "listName"
-    input.placeholder = "List Name"
-    input.name = "listName"
-
-    windowField.appendChild(label)
-    windowField.appendChild(input)
+    const labelName =  document.createElement("label")
+    labelName.htmlFor = "listName"
+    labelName.innerText = "New Todo"
+    const inputName = document.createElement("input")
+    inputName.type = "text"
+    inputName.id = "listName"
+    inputName.placeholder = "Name"
+    inputName.name = "listName"    
+    windowField.appendChild(labelName)
+    windowField.appendChild(inputName)
+    const detailsLabel = document.createElement("label")
+    detailsLabel.htmlFor = "description"
+    detailsLabel.innerText = "Description"
+    const inputDetails = document.createElement("input")
+    inputDetails.type = "text"
+    inputDetails.id = "description"
+    inputDetails.placeholder = "desc.."
+    inputDetails.name = "description"
+    windowField.appendChild(detailsLabel)
+    windowField.appendChild(inputDetails)
+    const labelDate = document.createElement("label")
+    labelDate.htmlFor = "date"
+    labelDate.innerHTML = "Date reminder is due (Optional)"
+    const inputDate = document.createElement("input")
+    inputDate.type = "date"
+    inputDate.name = "date"
+    inputDate.id = "date"
+    windowField.appendChild(labelDate)
+    windowField.appendChild(inputDate)    
 
     const addButton = document.createElement("button")
     addButton.innerHTML = "Add"
     addButton.type = "button"
     addButton.addEventListener("click", ()=>{
-        currentProject.addItem(todoItem(input.value))
+        currentProject.addItem(todoItem(inputName.value,inputDetails.value,false,setDateInfo(inputDate.value)))
         saveToJson(mainProject)
         openProject(currentProject,mainProject)
     })
@@ -211,7 +243,18 @@ function createNewTodoWindow(currentProject,mainProject)
 
     content.appendChild(popupWindow)
 }
-
+function setDateInfo(date)
+{
+    if (date != "")
+    {
+        console.log(date)
+        return date+"T00:00:00"
+    }
+    else
+    {
+        return null
+    }
+}
 function createPopupWindow(mainProject)
 {
     const popupWindow = document.createElement("div")

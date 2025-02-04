@@ -1,3 +1,4 @@
+import { compareAsc,format } from "date-fns"
 let id = 1
 
 const getTitle = (state) =>({
@@ -39,6 +40,12 @@ const toggleCheck = (state) => ({
 const getId = (state) =>({
     getId: () => {
         return state.id
+    }
+})
+
+const setDate = (state) =>({
+    setDate:(string)=> {
+    console.log("not yet implemneted")
     }
 })
 

@@ -6,7 +6,8 @@
 
 body {
     min-height: 100vh;
-    min-height: 100svh; /* for mobile so the view port automatically accounts for the address bar going up and down*/
+    min-height: 100svh;
+    /* for mobile so the view port automatically accounts for the address bar going up and down*/
     /* this is to make the rest of the page a flex container that way the bottom of the content will grow if its not big enough to fill the page */
     display: flex;
     /* same with this*/
@@ -16,21 +17,20 @@ body {
     align-items: center;
 }
 
-.content{
-    
-}
+.content {}
 
-.header{
+.header {
     font-size: 45px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding: 3px 0;
-    width: 500px; /* Maybe remove later? when the card container is emppty it might make it look like shit without or add to cardcontainer*/
+    width: 500px;
+    /* Maybe remove later? when the card container is emppty it might make it look like shit without or add to cardcontainer*/
 }
 
-.add{
+.add {
     font-size: 30px;
     background-color: white;
     border-radius: 90px;
@@ -42,45 +42,49 @@ body {
     cursor: pointer;
 }
 
-.card-container{
+.card-container {
     background-color: white;
     border-radius: 10px;
-    
+
 }
 
-.card{
+.card {
     padding: 10px;
     width: 500px;
     border-bottom: 1px solid rgb(211, 211, 211);
     display: flex;
     align-items: flex-end;
 }
-.circle{
+
+.circle {
     width: 20px;
     height: 20px;
     background: blue;
     border-radius: 90px;
-    margin: 0px 10px ;
+    margin: 0px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.card:hover, .add:hover{
+
+.card:hover,
+.add:hover {
     background-color: rgb(213, 213, 213);
 }
 
-#first{
+#first {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    
+
 }
-#last{
+
+#last {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border: none;
 }
 
-#first-last{
+#first-last {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -88,16 +92,17 @@ body {
     border: none;
 }
 
-.popup-window{
+.popup-window {
     top: 0px;
     left: 0px;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.429);
     width: 100%;
     height: 100%;
-    
+
 }
-.create-project-window{
+
+.create-project-window {
     background-color: white;
     width: 400px;
     height: 100px;
@@ -109,7 +114,7 @@ body {
     padding: 5px;
 }
 
-.create-project-window > form{
+.create-project-window>form {
     display: flex;
     gap: 10px;
     padding: 10px;
@@ -117,12 +122,13 @@ body {
     align-items: center;
     flex-direction: column;
 }
-.window-field{
+
+.window-field {
     display: flex;
     gap: 10px;
 }
 
-.close{
+.close {
     background-color: rgb(216, 216, 216);
     width: 20px;
     height: 20px;
@@ -134,7 +140,42 @@ body {
     cursor: pointer;
 }
 
-.close:hover{
+.close:hover {
     background-color: rgb(139, 139, 139);
+
+}
+
+
+.card>.card-text {
+    flex-grow: 1;
+}
+
+.card>input {
+    justify-self: start;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.card>.date {
+    margin-right: 10px;
+
+}
+
+.create-project-window-todo {
+
+    background-color: white;
+    width: 400px;
+
+    position: absolute;
+    top: 65px;
+    left: calc(50% - 200px);
+    border-radius: 10px;
+    padding: 10px 5px;
+}
+
+.window-field-todo {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
 
 }
