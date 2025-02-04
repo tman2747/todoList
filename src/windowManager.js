@@ -1,6 +1,6 @@
 import { project } from "./project"
 import { todoItem } from "./todoFactory"
-import {convertFromJson, saveToJson} from "./customJsonParsing"
+import { convertFromJson, saveToJson } from "./customJsonParsing"
 
 const content = document.querySelector(".content")
 
@@ -21,58 +21,60 @@ function addHeader(mainProject)
     addButton.classList.add("add")
     addButton.innerHTML = "+"
 
-    addButton.addEventListener("click",()=>{
+    addButton.addEventListener("click", () =>
+    {
         //call create popup window here
         createPopupWindow(mainProject)
     })
     header.appendChild(addButton)
-    content.appendChild(header)    
+    content.appendChild(header)
 }
 
 function addCards(mainProject)
 {
     const cardContainer = document.createElement("div")
     cardContainer.classList.add("card-container")
-    const color = ["blue","red","yellow","green"]
-        for (let i = 0; i < mainProject.getProjectList().length; i++)
-            {
-                const card = document.createElement("div")
-                card.classList.add("card")
-                if (i == 0 && i == mainProject.getProjectList().length)
-                {
-                    card.id = "first"
-                    card.id = "last"
-                }
-                else if (i == 0)
-                {
-                    card.id = "first"
-                }
-                else if (i == mainProject.getProjectList().length -1)
-                {
-                    card.id = "last"
-                }
-                const circle = document.createElement("div")
-                circle.classList.add("circle")
-                circle.style.backgroundColor=(color[i % color.length]) // modulo loops through the color array cyclically
-                card.appendChild(circle)
-        
-                const cardText = document.createElement("div")
-                cardText.classList.add("card-text")
-                cardText.innerHTML = mainProject.getProjectList()[i].getProjectName()
-                card.addEventListener("click", ()=>{
-                    // call opening the list view from here
-                    openProject(mainProject.getProjectList()[i],mainProject)
-                })
-        
-                card.appendChild(cardText)
-                cardContainer.appendChild(card)
-            }
+    const color = ["blue", "red", "yellow", "green"]
+    for (let i = 0; i < mainProject.getProjectList().length; i++)
+    {
+        const card = document.createElement("div")
+        card.classList.add("card")
+        if (i == 0 && i == mainProject.getProjectList().length)
+        {
+            card.id = "first"
+            card.id = "last"
+        }
+        else if (i == 0)
+        {
+            card.id = "first"
+        }
+        else if (i == mainProject.getProjectList().length - 1)
+        {
+            card.id = "last"
+        }
+        const circle = document.createElement("div")
+        circle.classList.add("circle")
+        circle.style.backgroundColor = (color[i % color.length]) // modulo loops through the color array cyclically
+        card.appendChild(circle)
+
+        const cardText = document.createElement("div")
+        cardText.classList.add("card-text")
+        cardText.innerHTML = mainProject.getProjectList()[i].getProjectName()
+        card.addEventListener("click", () =>
+        {
+            // call opening the list view from here
+            openProject(mainProject.getProjectList()[i], mainProject)
+        })
+
+        card.appendChild(cardText)
+        cardContainer.appendChild(card)
+    }
 
     content.appendChild(cardContainer)
 }
 
 
-function openProject(project,mainProject)
+function openProject(project, mainProject)
 {
     content.innerHTML = ""
     const header = document.createElement("div")
@@ -83,7 +85,8 @@ function openProject(project,mainProject)
     backButton.classList.add("add")
     backButton.innerHTML = "<"
 
-    backButton.addEventListener("click",()=>{
+    backButton.addEventListener("click", () =>
+    {
         //call create popup window here
         createrProjectWindow(mainProject)
     })
@@ -94,75 +97,62 @@ function openProject(project,mainProject)
     addButton.classList.add("add")
     addButton.innerHTML = "+"
 
-    addButton.addEventListener("click",()=>{
+    addButton.addEventListener("click", () =>
+    {
         //call create popup window here
-        createTodoPopupWindow(project,mainProject)
+        createTodoPopupWindow(project, mainProject)
     })
     header.appendChild(addButton)
-    content.appendChild(header)    
+    content.appendChild(header)
 
 
     const cardContainer = document.createElement("div")
     cardContainer.classList.add("card-container")
-    const color = ["blue","red","yellow","green"]
-        for (let i = 0; i < project.getProjectList().length; i++)
-            {
-                const card = document.createElement("div")
-                card.classList.add("card")
-                if (i == 0)
-                {
-                    card.id = "first"
-                }
-                else if (i == project.getProjectList().length -1)
-                {
-                    card.id = "last"
-                }
-                if (i == 0 && i == project.getProjectList().length-1)
-                {
-                    card.id = "first-last"
-                }
-                const circle = document.createElement("div")
-                circle.classList.add("circle")
-                circle.style.backgroundColor=(color[i % color.length]) // modulo loops through the color array cyclically
-                card.appendChild(circle)
-        
-                const cardText = document.createElement("div")
-                cardText.classList.add("card-text")
-                cardText.innerHTML = project.getProjectList()[i].getTitle()
-                card.addEventListener("click", ()=>{
-                    // details of clicked todo
-                    console.log("details of clicked todo")
-                    
-                })
-        
-                card.appendChild(cardText)
-                cardContainer.appendChild(card)
-            }
+    const color = ["blue", "red", "yellow", "green"]
+    for (let i = 0; i < project.getProjectList().length; i++)
+    {
+        const card = document.createElement("div")
+        card.classList.add("card")
+        if (i == 0)
+        {
+            card.id = "first"
+        }
+        else if (i == project.getProjectList().length - 1)
+        {
+            card.id = "last"
+        }
+        if (i == 0 && i == project.getProjectList().length - 1)
+        {
+            card.id = "first-last"
+        }
+        const circle = document.createElement("div")
+        circle.classList.add("circle")
+        circle.style.backgroundColor = (color[i % color.length]) // modulo loops through the color array cyclically
+        card.appendChild(circle)
+
+        const cardText = document.createElement("div")
+        cardText.classList.add("card-text")
+        cardText.innerHTML = project.getProjectList()[i].getTitle()
+        card.addEventListener("click", () =>
+        {
+            // details of clicked todo
+            console.log("details of clicked todo")
+
+        })
+
+        card.appendChild(cardText)
+        cardContainer.appendChild(card)
+    }
 
     content.appendChild(cardContainer)
 }
 
-{/*<div class="popup-window">
-    <div class="create-project-window-todo">
-        <div class="close">x</div>
-        <form>
-            <div class="window-field-todo">
-                <label for="listName">New Todo</label>
-                <input type="text" id="listName" placeholder="List Name" name="listName">
-                <label for="description">description</label>
-                <input type="text" id="description" placeholder="desc..." name="description">
-                <label for="date">Date reminder is due (Optional)</label>
-                <input type="date" name="date" id="date">
-                <button class="add-button" type="button" id="add-button">Add</button>
-            </div>
-        </form>
-    </div>
-</div>*/}
-function createTodoPopupWindow(currentProject,mainProject)
+function createTodoPopupWindow(currentProject, mainProject)
 {
     const popupWindow = document.createElement("div")
     popupWindow.classList.add("popup-window")
-    popupWindow.addEventListener("click", (event) => {
+    popupWindow.addEventListener("click", (event) =>
+    {
         if (event.target == popupWindow)
         {
             popupWindow.remove()
@@ -170,34 +160,36 @@ function createTodoPopupWindow(currentProject,mainProject)
     })
 
     const createProjectWindow = document.createElement("div")
-    createProjectWindow.classList.add("create-project-window-todo")    
+    createProjectWindow.classList.add("create-project-window-todo")
 
     const closeButton = document.createElement("div")
     closeButton.classList.add("close")
     closeButton.innerHTML = "x"
-    closeButton.addEventListener("click", ()=>{
+    closeButton.addEventListener("click", () =>
+    {
         popupWindow.remove()
     })
     createProjectWindow.appendChild(closeButton)
-    
+
     const windowField = document.createElement("div")
     windowField.classList.add("window-field-todo")
 
     const form = document.createElement("form")
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", (event) =>
+    {
         event.preventDefault(); // Prevent the default form submission on submit button
         currentProject.addItem(todoItem(inputName.value))
         saveToJson(mainProject)
-        openProject(currentProject,mainProject)
+        openProject(currentProject, mainProject)
     });
-    const labelName =  document.createElement("label")
+    const labelName = document.createElement("label")
     labelName.htmlFor = "listName"
     labelName.innerText = "New Todo"
     const inputName = document.createElement("input")
     inputName.type = "text"
     inputName.id = "listName"
     inputName.placeholder = "Name"
-    inputName.name = "listName"    
+    inputName.name = "listName"
     windowField.appendChild(labelName)
     windowField.appendChild(inputName)
     const detailsLabel = document.createElement("label")
@@ -218,15 +210,16 @@ function createTodoPopupWindow(currentProject,mainProject)
     inputDate.name = "date"
     inputDate.id = "date"
     windowField.appendChild(labelDate)
-    windowField.appendChild(inputDate)    
+    windowField.appendChild(inputDate)
 
     const addButton = document.createElement("button")
     addButton.innerHTML = "Add"
     addButton.type = "button"
-    addButton.addEventListener("click", ()=>{
-        currentProject.addItem(todoItem(inputName.value,inputDetails.value,false,setDateInfo(inputDate.value)))
+    addButton.addEventListener("click", () =>
+    {
+        currentProject.addItem(todoItem(inputName.value, inputDetails.value, false, setDateInfo(inputDate.value)))
         saveToJson(mainProject)
-        openProject(currentProject,mainProject)
+        openProject(currentProject, mainProject)
     })
 
     form.appendChild(windowField)
@@ -234,12 +227,12 @@ function createTodoPopupWindow(currentProject,mainProject)
 
     createProjectWindow.appendChild(form)
 
-    
-    
+
+
     popupWindow.appendChild(createProjectWindow)
 
 
-    
+
 
     content.appendChild(popupWindow)
 }
@@ -248,7 +241,7 @@ function setDateInfo(date)
     if (date != "")
     {
         console.log(date)
-        return date+"T00:00:00"
+        return date + "T00:00:00"
     }
     else
     {
@@ -259,7 +252,8 @@ function createPopupWindow(mainProject)
 {
     const popupWindow = document.createElement("div")
     popupWindow.classList.add("popup-window")
-    popupWindow.addEventListener("click", (event) => {
+    popupWindow.addEventListener("click", (event) =>
+    {
         if (event.target == popupWindow)
         {
             popupWindow.remove()
@@ -267,27 +261,29 @@ function createPopupWindow(mainProject)
     })
 
     const createProjectWindow = document.createElement("div")
-    createProjectWindow.classList.add("create-project-window")    
+    createProjectWindow.classList.add("create-project-window")
 
     const closeButton = document.createElement("div")
     closeButton.classList.add("close")
     closeButton.innerHTML = "x"
-    closeButton.addEventListener("click", ()=>{
+    closeButton.addEventListener("click", () =>
+    {
         popupWindow.remove()
     })
     createProjectWindow.appendChild(closeButton)
-    
+
     const windowField = document.createElement("div")
     windowField.classList.add("window-field")
 
     const form = document.createElement("form")
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", (event) =>
+    {
         event.preventDefault(); // Prevent the default form submission on submit button
         mainProject.addItem(new project(input.value))
         saveToJson(mainProject)
         createrProjectWindow(mainProject)
     });
-    const label =  document.createElement("label")
+    const label = document.createElement("label")
     label.htmlFor = "listName"
     label.innerText = "New List"
 
@@ -303,7 +299,8 @@ function createPopupWindow(mainProject)
     const addButton = document.createElement("button")
     addButton.innerHTML = "Add"
     addButton.type = "button"
-    addButton.addEventListener("click", ()=>{
+    addButton.addEventListener("click", () =>
+    {
         mainProject.addItem(new project(input.value))
         saveToJson(mainProject)
         createrProjectWindow(mainProject)
@@ -314,12 +311,12 @@ function createPopupWindow(mainProject)
 
     createProjectWindow.appendChild(form)
 
-    
-    
+
+
     popupWindow.appendChild(createProjectWindow)
 
 
-    
+
 
     content.appendChild(popupWindow)
 }
