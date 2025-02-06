@@ -49,6 +49,16 @@ const setDate = (state) =>({
     }
 })
 
+const getDate = (state) =>({
+    getDate: () => {
+        if (state.date != null)
+        {
+            return format(state.date,"MMM-dd-yyyy")
+        }
+        return ""
+    }
+})
+
 const toJson = (state)=>({
     toJson:()=>{
         return{
@@ -78,6 +88,7 @@ export const todoItem = (inputTitle="title",description = null, checked=false, d
         setTitle(state),
         setDescription(state),
         getId(state),
+        getDate(state),
         toJson(state),
     )
 }

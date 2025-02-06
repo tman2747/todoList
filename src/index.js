@@ -7,7 +7,6 @@ import { compareAsc, format } from "date-fns";
 
 
 let newproct = convertFromJson()
-console.log(newproct)
 createrProjectWindow(newproct)
 
 

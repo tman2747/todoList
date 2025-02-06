@@ -49,9 +49,10 @@ export function convertFromJson()
         {
             for(let i = 0; i < element.projectList.length; i++)
             {
-                newproct.getProjectList()[index].addItem(todoItem(element.projectList[i].title))
+                newproct.getProjectList()[index].addItem(todoItem(element.projectList[i].title,element.projectList[i].description,element.projectList[i].checked,element.projectList[i].date))
             }
         }
     })
+    console.log(newproct)
     return newproct
 }

@@ -108,7 +108,6 @@ function openProject(project, mainProject)
 
     const cardContainer = document.createElement("div")
     cardContainer.classList.add("card-container")
-    const color = ["blue", "red", "yellow", "green"]
     for (let i = 0; i < project.getProjectList().length; i++)
     {
         const card = document.createElement("div")
@@ -125,14 +124,23 @@ function openProject(project, mainProject)
         {
             card.id = "first-last"
         }
-        const circle = document.createElement("div")
-        circle.classList.add("circle")
-        circle.style.backgroundColor = (color[i % color.length]) // modulo loops through the color array cyclically
-        card.appendChild(circle)
+        const checkbox = document.createElement("input")
+        checkbox.type="checkbox"
+        checkbox.checked = project.getProjectList()[i].getChecked()
+        checkbox.addEventListener("change",()=>{
+            project.getProjectList()[i].toggleCheck()
+            console.log(project.getProjectList()[i].getChecked())
+            saveToJson(mainProject)
+        })
+        card.appendChild(checkbox)
 
         const cardText = document.createElement("div")
         cardText.classList.add("card-text")
         cardText.innerHTML = project.getProjectList()[i].getTitle()
+
+        const cardDate = document.createElement("div")
+        cardDate.classList.add("card-date")
+        cardDate.innerHTML = project.getProjectList()[i].getDate()
         card.addEventListener("click", () =>
         {
             // details of clicked todo
@@ -141,6 +149,7 @@ function openProject(project, mainProject)
         })
 
         card.appendChild(cardText)
+        card.appendChild(cardDate)
         cardContainer.appendChild(card)
     }
 
@@ -240,7 +249,6 @@ function setDateInfo(date)
 {
     if (date != "")
     {
-        console.log(date)
         return date + "T00:00:00"
     }
     else
